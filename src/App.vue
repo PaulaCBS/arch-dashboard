@@ -1,31 +1,21 @@
 <template>
-  <div id="app">
+  <v-app>
     <Header />
-    <router-view/>
+    <router-view />
     <Footer />
-  </div>
+  </v-app>
 </template>
 
 <script>
-import Header from '@/components/shared/Header.vue'
-import Footer from '@/components/shared/Footer.vue'
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default {
   name: 'App',
+
   components: {
     Header,
     Footer
   }
-}
-
+};
 </script>
-
-<style>
-  #app {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-
-    min-height: 98vh;
-  }
-</style>
