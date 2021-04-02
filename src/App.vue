@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app app>
     <Header />
     <router-view />
     <Footer />
@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from './components/shared/Header';
+import Footer from './components/shared/Footer';
 
 export default {
   name: 'App',

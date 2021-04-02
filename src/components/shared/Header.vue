@@ -1,49 +1,52 @@
 <template>
-  <header>
-    <v-app-bar
-      color="deep-purple accent-4"
-      dense
-      dark
-    >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Page title</v-toolbar-title>
+  <header class="header golden-border">
+      <v-toolbar-title>
+        <router-link to="/" class="logo-link">
+          <v-img src="../../assets/images/logo-light.png" alt="ArcH" max-width="4rem" />
+        </router-link>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
+      <div class="search-wrapper d-flex justify-center align-center">
+        <v-text-field
+          v-model="search"
+          flat
+          dark
+          solo-inverted
+          hide-details
+          color="#D79D39"
+          append-icon="mdi-magnify"
+          label="Buscar ..."
+        ></v-text-field>
+      </div>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      <v-spacer></v-spacer>
 
-      <v-menu
-        left
-        bottom
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
+      <div class="d-flex flex-row justify-space-between align-center">
+
+        <div class="mx-5 d-flex justify-center align-center">
+          <v-btn icon dark class="mx-2">
+            <v-icon>
+              mdi-bell-outline
+            </v-icon>
           </v-btn>
-        </template>
+          <v-btn icon dark class="mx-2">
+            <v-icon>
+              mdi-exit-to-app
+            </v-icon>
+          </v-btn>
+        </div>
 
-        <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-app-bar>
+        <v-avatar>
+          <img src="../../assets/images/pisani.jpg" alt="Pisani" />
+        </v-avatar>
+        <div class="d-flex flex-column justify-center">
+          <p class="user-greeting mx-3 my-0">Boas-vindas,</p>
+          <p class="user-name mx-3 my-0">Carlos Eduardo Pisani</p>
+        </div>
+      </div>
+
   </header>
 </template>
 
@@ -54,5 +57,33 @@ export default {
 </script>
 
 <style scoped>
-
+  .header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    min-height: 3rem;
+    padding: 0.7rem 6rem;
+    align-items: center;
+    background: #312F2F;
+    color: #FFF;
+  }
+  a {
+    text-decoration: none;
+  }
+  .golden-border {
+    border-bottom: 4px solid #D79D39;
+  }
+  .logo-link {
+    color: #FFF;
+  }
+  .search-wrapper {
+    min-width: 25rem;
+  }
+  .user-greeting {
+    font-size: 0.7rem;
+    color: #BCBCBC;
+  }
+  .user-name {
+    font-size: 0.9rem;
+  }
 </style>
