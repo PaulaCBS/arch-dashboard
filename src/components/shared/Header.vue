@@ -1,16 +1,13 @@
 <template>
   <header class="header golden-border">
-      <v-toolbar-title>
-        <router-link to="/" class="logo-link">
-          <v-img src="../../assets/images/logo-light.png" alt="ArcH" max-width="4rem" />
+      <h1>
+        <router-link to="/" class="logo-link" title="ArcH">
+          <img src="logo-light.png" alt="ArcH" class="logo-img" />
         </router-link>
-      </v-toolbar-title>
-
-      <v-spacer></v-spacer>
+      </h1>
 
       <div class="search-wrapper d-flex justify-center align-center">
         <v-text-field
-          v-model="search"
           flat
           dark
           solo-inverted
@@ -21,31 +18,33 @@
         ></v-text-field>
       </div>
 
-      <v-spacer></v-spacer>
-
       <div class="d-flex flex-row justify-space-between align-center">
 
-        <div class="mx-5 d-flex justify-center align-center">
-          <v-btn icon dark class="mx-2">
+      <div class="user">
+        <div class="user-account-options">
+          <v-btn icon dark class="user-account-options-btn" title="notificações">
             <v-icon>
               mdi-bell-outline
             </v-icon>
           </v-btn>
-          <v-btn icon dark class="mx-2">
+          <v-btn icon dark class="user-account-options-btn" title="sair">
             <v-icon>
               mdi-exit-to-app
             </v-icon>
           </v-btn>
         </div>
 
-        <v-avatar>
-          <img src="../../assets/images/pisani.jpg" alt="Pisani" />
-        </v-avatar>
-        <div class="d-flex flex-column justify-center">
-          <p class="user-greeting mx-3 my-0">Boas-vindas,</p>
-          <p class="user-name mx-3 my-0">Carlos Eduardo Pisani</p>
+        <div class="user-account-info">
+          <v-avatar>
+            <img src="../../assets/images/pisani.jpg" alt="Pisani" />
+          </v-avatar>
+          <div class="d-flex flex-column justify-center">
+            <p class="user-greeting">Boas-vindas,</p>
+            <p class="user-name">Carlos Eduardo Pisani</p>
+          </div>
         </div>
       </div>
+    </div>
 
   </header>
 </template>
@@ -62,7 +61,7 @@ export default {
     flex-flow: row wrap;
     justify-content: space-between;
     min-height: 3rem;
-    padding: 0.7rem 6rem;
+    padding: 0 7%;
     align-items: center;
     background: #312F2F;
     color: #FFF;
@@ -74,16 +73,44 @@ export default {
     border-bottom: 4px solid #D79D39;
   }
   .logo-link {
+    display: flex;
+    align-items: center;
     color: #FFF;
+  }
+  .logo-img {
+    max-width: 4.8rem;
   }
   .search-wrapper {
     min-width: 25rem;
+    margin: 0.5rem;
+  }
+  .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+  }
+  .user-account-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+  }
+  .user-account-options-btn {
+    margin: 0 0.5rem;
+  }
+  .user-account-info {
+    display: flex;
+    align-items: center;
+    min-width: 14rem;
   }
   .user-greeting {
+    margin: 0 0.7rem;
     font-size: 0.7rem;
     color: #BCBCBC;
   }
   .user-name {
+    margin: 0 0.7rem;
     font-size: 0.9rem;
   }
 </style>

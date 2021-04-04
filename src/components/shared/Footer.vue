@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-logo">
-      <img src="../../assets/images/logo-light.png" alt="ArcH" class="logo"/>
+      <img src="logo-light.png" alt="ArcH" class="logo"/>
     </div>
     <div class="footer-contact">      
       <p v-for="contact in contactInfo" :key="contact.id" class="contact-info">

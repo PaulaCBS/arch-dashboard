@@ -1,9 +1,9 @@
 <template>
-  <v-app app id="app">
+  <div id="app">
     <Header />
     <router-view />
     <Footer />
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -19,3 +19,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  #app {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    min-height: 100vh;
+    font-family: Roboto, sans-serif;
+    background: #f7f7f7 url("./assets/images/background.jpg") center/cover;
+  }
+</style>
