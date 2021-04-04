@@ -27,13 +27,14 @@
 export default {
   name: 'DataTable',
 
-  props: ['pagination', 'currentPage', 'itemsPage', 'pageOptions'],
+  props: [ 'pagination', 'currentPage', 'itemsPage', 'pageOptions' ]
 
 }
 </script>
 
 <style scoped>
   .data-container {
+    min-height: 25rem;
     padding-bottom: 1rem;
     overflow: auto;
   }

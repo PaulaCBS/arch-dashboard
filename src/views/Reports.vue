@@ -7,19 +7,11 @@
       </div>
       
       <div class="table-container">
-        <TableOptions />
+        <TableOptions :dataOrder="dataOrder" :dataOption="dataOption" :changeOrder="changeOrder" :sortData="sortData"/>
         <DataTable  :pagination="pagination"/>
       </div>
 
-      <div class="pages">
-        <button class="pagination-btn">
-          <v-icon>mdi-chevron-left</v-icon>
-        </button>
-        <button class="pagination-btn" v-for="index in totalPages" :key="index">{{ index }}</button>
-        <button class="pagination-btn">
-          <v-icon>mdi-chevron-right</v-icon>
-        </button>
-      </div>
+      <Pages :changePage="changePage" :page="page" :itemsPage="itemsPage" :totalPages="totalPages"/>
     </div>
   </main>
 </template>
@@ -27,18 +19,22 @@
 <script>
 import TableOptions from '../components/reportsPage/TableOptions'
 import DataTable from '../components/reportsPage/DataTable'
+import Pages from '../components/reportsPage/Pages'
 
 export default {
   name: 'Reports',
 
   components: {
     TableOptions,
-    DataTable
+    DataTable,
+    Pages
   },
 
   data: () => ({
     page: 1,
     itemsPage: 9,
+    dataOrder: ["Data", "Departamento"],
+    dataOption: 0,
     reports: [
       { "id": 1,
         "subject": "Donec pulvinar posuere ligula ac feugiat", 
@@ -132,16 +128,59 @@ export default {
       }
     ],
   }),
+  methods: {
+    changePage: function(param) {
+      if(param == "add" && this.page != this.totalPages) {
+        return this.page++
+      } 
+      if(param == "subtract" && this.page > 1) {
+        return this.page--
+      }
+      if(typeof param == "number") {
+        return this.page = param
+      }
+    },
+    changeOrder: function(option){
+      return this.dataOption = option;
+    },
+    sortData: function(param) {
+      if(param == 1) {
+        return this.reports.sort( (prev, next) => {
+          if(prev.department < next.department){
+            return -1
+          }
+          if(prev.department > next.department){
+            return 1
+          }
+          return 0
+        })
+      }
+      if(param == 0 ) {
+        return this.reports.sort( (prev, next) => {
+          prev = prev.date.split('/').reverse().join('');
+          next = next.date.split('/').reverse().join('');
+          if(prev < next){
+            return 1
+          }
+          if(prev > next){
+            return -1
+          }
+          return 0
+        })
+      }
+    }
+  },
   computed: {
     pagination: function(){
-      return this.reports.slice(
-        this.itemsPage - (this.itemsPage - (this.page-1)), 
+      return this.sortData(this.dataOption).slice(
+        (this.itemsPage*this.page) - this.itemsPage, 
         this.itemsPage*this.page
       )
     },
     totalPages: function(){
-      return Math.round(this.reports.length/this.itemsPage)
-    }
+      return Math.ceil(this.reports.length/this.itemsPage)
+    },
+    
   }
 }
 </script>
@@ -184,27 +223,5 @@ export default {
   .table-container {
     width: 100%;
     height: 80%;
-  }
-  .pages {
-    align-self: flex-end;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0;
-  }
-  .pagination-btn {
-    margin: 0 0.1rem;
-    padding: 0.35rem 0.8rem;
-    border-radius: 0.1rem;
-    box-shadow: 
-      0px 2px 4px -1px rgba(24, 39, 75, 0.12), 
-      0px 4px 12px -2px rgba(24, 39, 75, 0.1);
-    background: #FAFAFA;
-  }
-  .pagination-btn:first-child, .pagination-btn:last-child {
-    padding: 0.2rem 0.3rem;
-  }
-  .pagination-btn:hover {
-    border: 2px solid #F1D77E;
   }
 </style>

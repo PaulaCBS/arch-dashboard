@@ -7,8 +7,8 @@
           <span class="sort-choosed">{{ dataOrder[dataOption] }}</span> 
           <v-icon color="#FFF"> mdi-menu-down </v-icon>
         <div v-if="dropdownActive" id="dropdown-menu" >
-          <p @click="changeOrder(0)" class="dropdown-menu-item">Data</p>
-          <p @click="changeOrder(1)" class="dropdown-menu-item">Departamento</p>
+          <p @click="changeOrder(0); sortData(dataOption)" class="dropdown-menu-item">Data</p>
+          <p @click="changeOrder(1); sortData(dataOption)" class="dropdown-menu-item">Departamento</p>
         </div>
       </label>
     </div>
@@ -29,18 +29,12 @@
 <script>
 export default {
   name: 'TableOptions',
+
+  props: [ 'dataOption', 'dataOrder', 'changeOrder', 'sort', 'sortData' ],
   
   data: () => ({
-    dropdownActive: false,
-    dataOrder: ["Data", "Departamento"],
-    dataOption: 0,
-  }),
-
-  methods: {
-    changeOrder: function(option){
-      return this.dataOption = option;
-    }
-  }
+    dropdownActive: false
+  })
 }
 </script>
 
@@ -77,7 +71,7 @@ export default {
     color: #FFF;
   }
   .sort-label {
-    flex: 0 0 11.4rem;
+    min-width: 11.5rem;
     position: relative;
     margin: 0.7rem 0.5rem 0 0.5rem;
     padding: 0.34rem 1rem;
