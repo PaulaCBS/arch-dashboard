@@ -65,4 +65,10 @@ export default {
   .menu-icon {
     width: 2rem;
   }
+  @media (max-width: 975px) {
+    .menu {
+      display: flex;
+      flex-flow: row-reverse wrap;
+    }
+  }
 </style>

@@ -113,4 +113,25 @@ export default {
     margin: 0 0.7rem;
     font-size: 0.9rem;
   }
+
+  @media (max-width: 500px) {
+    .header {
+      justify-content: center;
+    }
+    h1 {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+  }
+  @media (max-width: 975px) {
+    .search-wrapper {
+      order: 3;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+  }
 </style>
