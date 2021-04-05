@@ -1,40 +1,70 @@
 <template>
   <div class="table-options align-center">
     <div class="table-organize align-center">
-      <input type="text" placeholder="Buscar ..." class="reports-search" @keyup="search($event.target.value)"/>
-      <label for="dropdown-menu" class="sort-label align-center" @click="dropdownActive = !dropdownActive">
-        Ordenar por: 
+      <input type="text" 
+             placeholder="Buscar ..." 
+             class="reports-search" 
+             @keyup="search($event.target.value)"/>
+
+      <label for="dropdown-menu" 
+             class="sort-label align-center" 
+             @click="dropdownActive = !dropdownActive"> Ordenar por: 
+
           <span class="sort-choosed">{{ dataOrder[orderOption] }}</span> 
           <v-icon color="#FFF"> mdi-menu-down </v-icon>
+
         <div v-if="dropdownActive" id="dropdown-menu" >
-          <p @click="changeOrder(0); sortData(orderOption)" class="dropdown-menu-item">Data</p>
-          <p @click="changeOrder(1); sortData(orderOption)" class="dropdown-menu-item">Departamento</p>
+          <p @click="changeOrder(0); sortData(orderOption)" 
+              class="dropdown-menu-item">Data</p>
+          <p @click="changeOrder(1); sortData(orderOption)" 
+              class="dropdown-menu-item">Departamento</p>
         </div>
       </label>
     </div>
+
     <div class="table-actions align-center">
+      <button class="table-actions-btn" title="Baixar">
+        <v-icon color="#F1D77E">mdi-file-download-outline</v-icon>
+      </button>
       <button class="table-actions-btn" title="Deletar">
         <v-icon color="#F1D77E">mdi-file-edit-outline</v-icon>
       </button>
       <button class="table-actions-btn" title="Editar">
         <v-icon color="#F1D77E">mdi-delete-outline</v-icon>
       </button>
-      <button class="table-actions-btn" title="Adicionar">
+      <button class="table-actions-btn" 
+              title="Adicionar" 
+              @click="addModalActive = !addModalActive">
         <v-icon color="#F1D77E">mdi-plus-box</v-icon>
       </button>
     </div>
+
+    <AddNewModal :addModalActive="addModalActive" :closeModal="closeModal" />
   </div>
 </template>
 
 <script>
+import AddNewModal from './AddNewModal'
+
 export default {
   name: 'TableOptions',
 
   props: [ 'orderOption', 'dataOrder', 'changeOrder', 'sort', 'sortData', 'search' ],
   
+  components: {
+    AddNewModal
+  },
+
   data: () => ({
-    dropdownActive: false
-  })
+    dropdownActive: false,
+    addModalActive: false
+  }),
+
+  methods: {
+    closeModal: function() {
+      this.addModalActive = !this.addModalActive
+    }
+  }
 }
 </script>
 
