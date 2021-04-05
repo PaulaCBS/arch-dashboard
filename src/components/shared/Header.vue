@@ -125,7 +125,7 @@ export default {
       margin: 1.5rem 0;
     }
   }
-  @media (max-width: 975px) {
+  @media (max-width: 990px) {
     .search-wrapper {
       order: 3;
       display: flex;

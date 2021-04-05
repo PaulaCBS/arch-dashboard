@@ -11,7 +11,11 @@
       <BarChart />
 
       <div class="calendar-container">
-        <v-date-picker v-model="picker"  full-width locale="pt-br" color="#312F2F" class="calendar"></v-date-picker>
+        <v-date-picker v-model="picker"  
+                       full-width locale="pt-br" 
+                       color="#312F2F" 
+                       class="calendar">
+        </v-date-picker>
       </div>
     </div>
 
@@ -58,7 +62,7 @@ export default {
     padding: 1rem 0;
   }
   .calendar-container {
-    width: 100%;
+    width: 90%;
   }
   .calendar {
     margin: 1rem 0;

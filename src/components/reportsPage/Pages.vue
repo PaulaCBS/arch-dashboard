@@ -3,9 +3,9 @@
     <button class="pagination-btn" @click="changePage('subtract')">
       <v-icon>mdi-chevron-left</v-icon>
     </button>
-    <button class="pagination-btn" 
+    <button :class="{'pagination-btn': true, 'active':(index === page)}" 
             v-for="index in totalPages" 
-            :key="index" 
+            :key="index"
             @click="changePage(Number(index))"> {{ index }}
     </button>
     <button class="pagination-btn" @click="changePage('add')">
@@ -46,5 +46,9 @@ export default {
   }
   .pagination-btn:hover {
     border: 2px solid #F1D77E;
+  }
+  .active {
+    background: #312F2F;
+    color: #FFF;
   }
 </style>

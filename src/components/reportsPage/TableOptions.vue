@@ -1,14 +1,14 @@
 <template>
   <div class="table-options align-center">
     <div class="table-organize align-center">
-      <input type="text" placeholder="Buscar ..." class="reports-search"/>
+      <input type="text" placeholder="Buscar ..." class="reports-search" @keyup="search($event.target.value)"/>
       <label for="dropdown-menu" class="sort-label align-center" @click="dropdownActive = !dropdownActive">
         Ordenar por: 
-          <span class="sort-choosed">{{ dataOrder[dataOption] }}</span> 
+          <span class="sort-choosed">{{ dataOrder[orderOption] }}</span> 
           <v-icon color="#FFF"> mdi-menu-down </v-icon>
         <div v-if="dropdownActive" id="dropdown-menu" >
-          <p @click="changeOrder(0); sortData(dataOption)" class="dropdown-menu-item">Data</p>
-          <p @click="changeOrder(1); sortData(dataOption)" class="dropdown-menu-item">Departamento</p>
+          <p @click="changeOrder(0); sortData(orderOption)" class="dropdown-menu-item">Data</p>
+          <p @click="changeOrder(1); sortData(orderOption)" class="dropdown-menu-item">Departamento</p>
         </div>
       </label>
     </div>
@@ -30,7 +30,7 @@
 export default {
   name: 'TableOptions',
 
-  props: [ 'dataOption', 'dataOrder', 'changeOrder', 'sort', 'sortData' ],
+  props: [ 'orderOption', 'dataOrder', 'changeOrder', 'sort', 'sortData', 'search' ],
   
   data: () => ({
     dropdownActive: false
@@ -91,6 +91,7 @@ export default {
     padding: 0.5rem 1rem;
     border-radius: 0.2rem;
     background: #525050;
+    z-index: 1;
   }
   .dropdown-menu-item {
     margin: 0.5rem 0 1rem 0;
