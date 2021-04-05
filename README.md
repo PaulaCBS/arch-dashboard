@@ -1,19 +1,25 @@
-# arch-dashboard
+# ArcH Dashboard
 
-## Project setup
+Desafio para vaga de estágio front-end da ArcHOffice (2021)
+___
+## :pushpin: Instalando as dependências
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+ou
+
+```
+yarn install
+```
+
+### :pushpin: Conectando o servidor
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+ou
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+yarn serve
+```
